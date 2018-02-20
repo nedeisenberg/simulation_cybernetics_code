@@ -1,75 +1,46 @@
-// TODO
-// - coordinate system
-// - ellipses and other shapes
-// - fills, strokes
-// - text
-// - images
-// - positioning
-// - rotation
+// the 'varying's are shared between both vertex & fragment shaders
+var varying = 'precision highp float; varying vec2 vPos;';
 
-// runs before everything
-// use to load assets
-var duck;
-var nick_cage;
-function preload() {
-  // // load an image
-  duck = loadImage('assets/duck.png');
-  nick_cage = loadImage('assets/nickcage.jpeg');
-}
+// the vertex shader is called for each vertex
+var vs =
+  varying +
+  'attribute vec3 aPosition;' +
+  'void main() { vPos = (gl_Position = vec4(aPosition,1.0)).xy; }';
 
-// runs once at start
+// the fragment shader is called for each pixel
+var fs =
+  varying +
+  'uniform vec2 p;' +
+  'uniform float r;' +
+  'const int I = 500;' +
+  'void main() {' +
+  '  vec2 c = p + vPos * r, z = c;' +
+  '  float n = 0.0;' +
+  '  for (int i = I; i > 0; i --) {' +
+  '    if(z.x*z.x+z.y*z.y > 4.0) {' +
+  '      n = float(i)/float(I);' +
+  '      break;' +
+  '    }' +
+  '    z = vec2(z.x*z.x-z.y*z.y, 2.0*z.x*z.y) + c;' +
+  '  }' +
+  '  gl_FragColor = vec4(0.5-cos(n*17.0)/2.0,0.5-cos(n*13.0)/2.0,0.5-cos(n*23.0)/2.0,1.0);' +
+  '}';
+
+var mandel;
 function setup() {
-  createCanvas(window.innerWidth, window.innerHeight);
-  u_time = 0;
+  createCanvas(700, 700, WEBGL);
+
+  // create and initialize the shader
+  mandel = createShader(vs, fs);
+  shader(mandel);
+  noStroke();
+
+  // 'p' is the center point of the Mandelbrot image
+  mandel.setUniform('p', [-0.64364388703, 0.43282590421]);
 }
 
-// runs every frame
 function draw() {
-	u_time+=1;
-  background(0,0,255);
-  fill(255, 255, 255);
-
-  // https://p5js.org/reference/#/p5/ellipse
-  ellipse(50, 50, 80, 80);
-
-  // https://p5js.org/reference/#/p5/fill
-  fill(255, 204, 0);
-
-  // https://p5js.org/reference/#/p5/rect
-  rect(30, 20, 55, 55);
-
-  fill(255, 100, 0);
-  rotate(0.1);
-  rect(200, 180, 55, 55);
-  resetMatrix();
-
-  // get the center x and y coordinates
-  [centerX, centerY] = [width/2, height/2];
-
-  // rendering text
-  fill(255, 204, 0);
-  textSize(32);
-  
-  //inter=Math.sin(u_time);
-  inter=40;
-  for(i=0;i<window.innerWidth;i+=inter){
-  	for(j=0;j<window.innerHeight;j+=inter)
-	 //text('word', i, j);	
-	   image(nick_cage,i,j,40,40);
-  }
-
-  // render the image at x=125, y=200
-  rW=random(window.innerWidth);
-  rH=random(window.innerHeight);
-  
-  rWW=random(30,130)
-  rHH=random(10,100)
-  image(duck, rW, rH,rWW,rHH);
-  
- // image(nick_cage,window.innerWidth/2,window.innerHeight/2,40,40);
-}
-
-// resize canvas when the browser window resizes
-function windowResized() {
-  resizeCanvas(window.innerWidth, window.innerHeight);
+  // 'r' is the size of the image in Mandelbrot-space
+  mandel.setUniform('r', .5 * exp(-6.5 * (1 + sin(millis() / 2000))));
+  quad(-1, -1, 1, -1, 1, 1, -1, 1);
 }
