@@ -19,7 +19,7 @@ function setup(){
 	createCanvas(1000, 1000, WEBGL);
 	jatte = createShader(vs,fs);
 	shader(jatte);
-	park = loadImage('assets/20180224_171305.jpg');
+	park = loadImage('assets/park.jpeg');
 	jatte.setUniform('u_Image',park);
 	
 	seurat = loadImage('assets/seurat.jpeg')
