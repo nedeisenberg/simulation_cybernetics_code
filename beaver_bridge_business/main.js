@@ -230,7 +230,7 @@ function updateRiver() {
 			}
 
 		//break bridges
-		if (currents[b] > (bridges[b]*2-1)) {
+		if (currents[5-b] > (bridges[b]*2-1)) {
 			bridges[b]=0;
 		}
 

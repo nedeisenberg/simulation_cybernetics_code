@@ -20,7 +20,7 @@ var windowW = window.innerWidth;
 var windowH = window.innerHeight;
 
 var placeW = windowW/2//900;
-var placeH = windowH/3//500;
+var placeH = windowH/2//500;
 
 var bankX = windowW/2+placeW/3;
 
@@ -230,7 +230,7 @@ function updateRiver() {
 			}
 
 		//break bridges
-		if (currents[b] > (bridges[b]*2-1)) {
+		if (currents[5-b] > (bridges[b]*2-1)) {
 			bridges[b]=0;
 		}
 
