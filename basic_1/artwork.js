@@ -1,3 +1,5 @@
+var source_url="http://www.abcgallery.com/S/seurat/seurat37.JPG";
+
 var varying = 'precision highp float; varying vec2 vPos;';
 
 var vs =
