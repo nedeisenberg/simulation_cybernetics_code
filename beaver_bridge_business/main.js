@@ -367,9 +367,3 @@ function windowResized() {
 	windowH = window.innerHeight;
   resizeCanvas(window.innerWidth, window.innerHeight);
 }
-
-// handles mouse clicks for the entire page
-function mouseClicked() {
-  // increment score by 1
-  STATE.score += 1;
-}
