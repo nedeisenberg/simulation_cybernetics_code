@@ -4,14 +4,32 @@ body{
   }
   
 .link{
+display:flex;
 position:absolute;
-  display:inline-block;
 z-index:1;
 width:100vw;
 height:100vh;
-text-aligin:center;
-font-size:4em;
+ justify-content: center;
+  align-items: center;
 }
+ a{
+   display:inline-block;
+ vertical-align:middle;
+  color:#08001d;
+ text-decoration:none;
+ font-family:Arial;
+ font-size:4em;
+ -moz-transition:font-size .48s ease-in;
+-webkit-transition:font-size .48s ease-in;
+ -o-transition:font-size .48s ease-in;
+}
+ a:hover{
+  font-size:4.5em;
+ }
+ a:visited{
+  color:#08001d;
+ }
+ 
 .background{
 position:absolute;
   display:block;
@@ -27,13 +45,9 @@ z-index:0;
 </style>
 <html>
 <body>  
-<div class="background">
-  
-  </div>
+<div class="background"></div>
 <div class="link">
-
-Click Here
-
+ <a href="index.html"> {Click here to load}</a>
 </div>
  </body>
 </html>
