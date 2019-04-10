@@ -201,12 +201,14 @@ function headsUp(){
   text(`${STATE.minutes} minutes have passed...`, windowW/2+placeW/2, windowH/2+placeH/2+32);
   
   textAlign(LEFT);
+	rectMode(CORNERS);
   text("press 'b' for birch",windowW/2 + placeW/2,windowH/2-placeH/3);
   text("press 'o' for oak", windowW/2 + placeW/2, windowH/2);
-  text("press 'r' for redwood",windowW/2 + placeW/2, windowH/2+placeH/3,150,200);
+  text("press 'r' for redwood",windowW/2 + placeW/2, windowH/2+placeH/3,windowW/2 + placeW/2+150,windowH/2+placeH/3+200);
   var msg = "Objective: Direct a beaver's construction as they build a bridge across a changing river.  Lighter wood, though faster to collect, will be swept away by powerful currents, indicated by dark blue waters...  Currents may grow incrementally stronger, weaker or stay the same.  Test your high score; good luck!";
  textSize(16);
-	text(msg,5,5,placeW,windowH); 
+	text(msg,5,5,placeW/2-5,windowH);
+	rectMode(CENTER);`
 }
 
 function updateRiver() {
