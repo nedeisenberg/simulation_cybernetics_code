@@ -208,7 +208,7 @@ function headsUp(){
   var msg = "Objective: Direct a beaver's construction as they build a bridge across a changing river.  Lighter wood, though faster to collect, will be swept away by powerful currents, indicated by dark blue waters...  Currents may grow incrementally stronger, weaker or stay the same.  Test your high score; good luck!";
  textSize(16);
 	text(msg,5,5,placeW/2-5,windowH);
-	rectMode(CENTER);`
+	rectMode(CENTER);
 }
 
 function updateRiver() {
