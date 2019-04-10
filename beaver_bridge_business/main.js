@@ -196,7 +196,7 @@ function count(){
 function headsUp(){
 //state minutes
 	fill(100,255,100);
-  textSize(24);
+  textSize(20);
   textAlign(RIGHT)
   text(`${STATE.minutes} minutes have passed...`, windowW/2+placeW/2, windowH/2+placeH/2+32);
   
@@ -204,8 +204,8 @@ function headsUp(){
   text("press 'b' for birch",windowW/2 + placeW/2,windowH/2-placeH/3);
   text("press 'o' for oak", windowW/2 + placeW/2, windowH/2);
   text("press 'r' for redwood",windowW/2 + placeW/2, windowH/2+placeH/3);
-	
-text("Objective: Direct a beaver's construction as they build a bridge across a changing river.  Lighter wood, though faster to collect, will be swept away by powerful currents, indicated by dark blue waters...  Currents may grow incrementally stronger, weaker or stay the same.  Test your high score; good luck!",5,5,windowW/3,windowH-40); 
+  
+text("Objective: Direct a beaver's construction as they build a bridge across a changing river.  Lighter wood, though faster to collect, will be swept away by powerful currents, indicated by dark blue waters...  Currents may grow incrementally stronger, weaker or stay the same.  Test your high score; good luck!",0,0,windowW/3,windowH-40); 
 }
 
 function updateRiver() {
