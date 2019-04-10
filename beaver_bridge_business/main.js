@@ -300,10 +300,10 @@ function welcomeText(){
 	textSize(48);
 	fill(12,12,170);
 	textStyle(BOLD);
-	text("BRIDGE",windowW/2-120,windowH/2+40)
+	text("BRIDGE",windowW/2,windowH/2)
 	textAlign(CENTER);
 	textSize(24);
-	text("Touch any key...",windowW/2,windowH/2);
+	text("Touch any key...",windowW/2,windowH/2+placeH/2);
 }
 
 
